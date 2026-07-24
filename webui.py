@@ -8,6 +8,8 @@ import html
 _offline_cuda_graph = os.environ.get("RVC_OFFLINE_CUDA_GRAPH", "0") == "1"
 os.environ["RVC_CUDA_GRAPH"] = "1" if _offline_cuda_graph else "0"
 
+os.environ["KMP_DUPLICATE_LIB_OK"] = "TRUE"
+os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
 os.environ.setdefault("no_proxy", "localhost, 127.0.0.1, ::1")
 os.environ.setdefault("weight_root", "assets/weights")

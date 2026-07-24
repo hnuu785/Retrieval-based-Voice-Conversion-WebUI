@@ -120,6 +120,12 @@ if infer_device.type != "cuda":
             torch.float32,
             0.0,
         )
+    elif torch.backends.mps.is_available():
+        infer_device, infer_dtype, infer_gpu_mem = (
+            torch.device("mps"),
+            torch.float32,
+            0.0,
+        )
     else:
         infer_device, infer_dtype, infer_gpu_mem = (
             torch.device("cpu"),
