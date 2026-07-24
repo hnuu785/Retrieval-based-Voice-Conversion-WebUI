@@ -1,5 +1,12 @@
 import os
 import sys
+
+_now_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+if _now_dir not in sys.path:
+    sys.path.insert(0, _now_dir)
+_script_dir = os.path.dirname(os.path.abspath(__file__))
+if _script_dir in sys.path:
+    sys.path.remove(_script_dir)
 import traceback
 
 device = sys.argv[1]
