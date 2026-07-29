@@ -14,8 +14,10 @@ class I18nAuto:
             language = locale.getdefaultlocale()[
                 0
             ]  # getlocale can't identify the system's language ((None, None))
-        if not os.path.exists(f"./i18n/locale/{language}.json"):
-            language = "en_US"
+        if language:
+            language = language.split(".")[0]
+        if not language or not os.path.exists(f"./i18n/locale/{language}.json"):
+            language = "ko_KR"
         self.language = language
         self.language_map = load_language_list(language)
 
